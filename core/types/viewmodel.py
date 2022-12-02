@@ -2,7 +2,7 @@
 from dataclasses import dataclass, field
 from typing import TypeAlias
 
-from core.types.commontypes import Date, Time
+from core.types.common import Date, Time
 
 
 @dataclass

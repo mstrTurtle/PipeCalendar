@@ -27,3 +27,22 @@ class Success:
             return Success(x, True)
         except:
             return Success(self.value)  # 失败了, 把值丢进去让它继续试.
+
+
+class InfixAdaptor:
+    """
+    >>> add = InfixAdaptor(lambda x,y:x+y)
+    >>> 1 <<add>> 2
+    3
+
+    """
+
+    def __init__(self, f):
+        self.f = f
+
+    def __rlshift__(self, lhs):
+        self.lhs = lhs
+        return self
+
+    def __rshift__(self, rhs):
+        return self.f(self.lhs, rhs)
